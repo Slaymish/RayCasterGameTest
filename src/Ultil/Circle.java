@@ -29,8 +29,9 @@ public class Circle {
         return p1;
     }
 
-    public static void drawMini(Graphics g, Point2d p){
+    public static void drawMini(Graphics g, Point2d p,Ray ray){
         g.setColor(new Color(0,0,255));
+        g.drawLine(ray.origin.x(),ray.origin.y(),p.x(),p.y());
         g.fillOval(p.x()-radius,p.y()-radius,radius,radius);
     }
 
