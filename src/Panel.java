@@ -59,14 +59,18 @@ public class Panel extends JPanel implements ActionListener, KeyListener{
         player.draw(g);
 
         Vector2d camVect = new Vector2d(1,0);
+        Point2d nullPoint = new Point2d(-1,-1);
         // Calculate camera ray
         for (int i = 0; i<20;i++){
             Ray ray = new Ray(new Point2d(player.pos.x,player.pos.y), camVect);
             for (Circle circle:circles){
                 circle.draw(g);
-                Circle.drawMini(g,circle.hit(ray), ray);
+                Point2d p1 = circle.hit(ray);
+                if (p1.x != -1 && p1.y != -1){
+                    Circle.drawMini(g,circle.hit(ray), ray);
+                }
             }
-            camVect.rotate(0.3);
+            camVect.rotate(2);
         }
 
         // this smooths out animations on some systems
